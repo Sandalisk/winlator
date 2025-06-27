@@ -9,11 +9,10 @@ on:
 
 jobs:
   build:
-    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📥 Checkout repository
+    - name: 📥 Checkout source code
       uses: actions/checkout@v3
 
     - name: ☕ Set up JDK 17
@@ -22,16 +21,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: 🧰 Set up Android SDK
-      uses: android-actions/setup-android@v3
+    - name: 🛠 Install Gradle
+      uses: gradle/actions/setup-gradle@v3
 
-    - name: 📦 Grant execute permission to gradlew
-      run: chmod +x ./gradlew
+    - name: 🔧 Build with Gradle
+      run: gradle assembleRelease
 
-    - name: ⚙️ Build APK
-      run: ./gradlew assembleRelease
-
-    - name: 📤 Upload APK artifact
+    - name: 📤 Upload APK
       uses: actions/upload-artifact@v4.3.0
       with:
         name: Winlator-APK
