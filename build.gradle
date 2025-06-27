@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.14.2' // или 7.x, если ты используешь старый формат
+        classpath 'com.android.tools.build:gradle:8.4.0' // или 7.x, если ты используешь старый формат
     }
 }
 
